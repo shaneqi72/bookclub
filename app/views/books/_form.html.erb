@@ -3,7 +3,7 @@
     <%= f.label "#{:title}:" %> <%= f.text_field :title, placeholder: 'input title' %>
 </p>
 <p>
-    <%= f.label :cover %> <%= f.file_field :cover_image %>
+    <%= f.label :cover %> <%= f.file_field :cover %>
 </p>
 <p>
     <%= f.label :author_id %> <%= f.collection_select :author_id, @authors, :id, :full_name %>
