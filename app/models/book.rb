@@ -6,11 +6,13 @@ class Book < ApplicationRecord
      has_many :genres, through: :book_genres
 
      has_one_attached :cover, dependent: :destroy
-    #  validate :has_genre
+    #  validates :has_genre
 
      validates :title, presence: {message: "Please provide a title"}
     #  validates :date_published, presence: true
      validates :date_published, presence: {message: "Please provide a publish date"}
+
+     ### IMPORTANT: if it is custom validate, using term of "validate" not "validates"
      validate :past_date
     #  validates :price, numericality: {only_integer: true}
     #  validates :price, numericality: {greater_than_or_equal_to: 0}

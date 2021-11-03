@@ -2,12 +2,12 @@ class ApplicationController < ActionController::Base
 
     include Pundit
 
-rescue_from Pundit::NotAuthorizedError, with: :forbidden
+    rescue_from Pundit::NotAuthorizedError, with: :forbidden
 
-private
+    private
 
-def forbidden
-    flash[:alert] = "You are not authorised to perform that action"
-    redirect_to(request.referrer || root_path)
-end
+    def forbidden
+        flash[:alert] = "You are not authorised to perform that action"
+        redirect_to(request.referrer || root_path)
+    end
 end

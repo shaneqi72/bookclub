@@ -13,15 +13,14 @@ class BooksController < ApplicationController
   def index
       case params[:query]
       when "in_stock"
-        @books = Book.in_stoc
+        @books = Book.in_stock
       when "out_of_stock"
-        @book = Book.out_of_stock
+        @books = Book.out_of_stock
       when "banned"
-        @book = Book.banned
+        @books = Book.banned
       else 
-        @book = Book.order(title: :asc)
+        @books = Book.order(title: :asc)
     end
-    @books = Book.order(title: :asc)
   end
 
   def create
@@ -46,7 +45,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book. destroy
+    @book.destroy
       redirect_to books_path
   end
 
@@ -67,7 +66,6 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :publisher, :date_published, :author_id, :cover, genre_ids: [])
   end
 
-  private
   def set_authors_and_genres
       @authors = Author.order(:last_name)
       @genres = Genre.order(:name)
